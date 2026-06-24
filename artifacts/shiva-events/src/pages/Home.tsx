@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import {
   useGetFeaturedPortfolio,
@@ -8,6 +8,11 @@ import {
   useListTestimonials,
   useGetSiteStats,
 } from "@workspace/api-client-react";
+
+const HERO_VIDEOS = [
+  "https://assets.mixkit.co/videos/preview/mixkit-guests-at-a-wedding-reception-2168-large.mp4",
+  "https://assets.mixkit.co/videos/preview/mixkit-wedding-ceremony-from-above-2167-large.mp4",
+];
 
 function CountUp({ end, duration = 2 }: { end: number; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -31,9 +36,9 @@ function CountUp({ end, duration = 2 }: { end: number; duration?: number }) {
 
 function Preloader({ onDone }: { onDone: () => void }) {
   useEffect(() => {
-    const timer = setTimeout(onDone, 1600);
+    const timer = setTimeout(onDone, 1800);
     return () => clearTimeout(timer);
-  }, []);
+  }, [onDone]);
 
   return (
     <motion.div
@@ -45,16 +50,16 @@ function Preloader({ onDone }: { onDone: () => void }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="text-center"
+        className="text-center px-6"
       >
-        <p className="font-serif text-3xl text-white tracking-widest">Shiva Group Events</p>
+        <img src="/logo.png" alt="Shiva Group Events" className="h-24 w-auto object-contain mx-auto mb-6" />
         <motion.div
-          className="mt-4 h-0.5 bg-primary"
+          className="mt-2 h-0.5 bg-primary"
           initial={{ width: 0 }}
           animate={{ width: "100%" }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
+          transition={{ duration: 1.4, ease: "easeInOut" }}
         />
-        <p className="mt-3 text-xs text-white/40 tracking-[0.3em] uppercase">Creating Extraordinary Experiences</p>
+        <p className="mt-4 text-xs text-white/40 tracking-[0.3em] uppercase">Creating Extraordinary Experiences</p>
       </motion.div>
     </motion.div>
   );
@@ -63,6 +68,9 @@ function Preloader({ onDone }: { onDone: () => void }) {
 export default function Home() {
   const [showPreloader, setShowPreloader] = useState(() => !sessionStorage.getItem("sge_visited"));
   const [preloaderDone, setPreloaderDone] = useState(false);
+  const [videoError, setVideoError] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   const { data: featured = [] } = useGetFeaturedPortfolio();
   const { data: services = [] } = useListServices();
   const { data: testimonials = [] } = useListTestimonials();
@@ -74,13 +82,6 @@ export default function Home() {
     setTimeout(() => setShowPreloader(false), 700);
   };
 
-  const categories = [
-    { key: "luxury-weddings", label: "Luxury Weddings" },
-    { key: "corporate-events", label: "Corporate Events" },
-    { key: "award-ceremonies", label: "Award Ceremonies" },
-    { key: "celebrity-shows", label: "Celebrity Shows" },
-  ];
-
   return (
     <>
       {showPreloader && (
@@ -89,29 +90,47 @@ export default function Home() {
         </motion.div>
       )}
 
-      {/* Hero */}
+      {/* Hero — Video Background */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0F0F0F]">
         <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-gradient-to-b from-[#0F0F0F]/60 via-[#0F0F0F]/30 to-[#0F0F0F]/70 absolute inset-0 z-10" />
-          <img
-            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80"
-            alt="Luxury Event"
-            className="w-full h-full object-cover opacity-50"
-          />
+          {/* Gradient overlay */}
+          <div className="w-full h-full bg-gradient-to-b from-[#0F0F0F]/70 via-[#0F0F0F]/30 to-[#0F0F0F]/80 absolute inset-0 z-10" />
+
+          {/* Video */}
+          {!videoError ? (
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              onError={() => setVideoError(true)}
+              className="w-full h-full object-cover opacity-60"
+            >
+              <source src={HERO_VIDEOS[0]} type="video/mp4" />
+              <source src={HERO_VIDEOS[1]} type="video/mp4" />
+            </video>
+          ) : (
+            <img
+              src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80"
+              alt="Luxury Event"
+              className="w-full h-full object-cover opacity-50"
+            />
+          )}
         </div>
 
         <motion.div
           className="relative z-20 text-center px-6 max-w-4xl"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: showPreloader ? 0 : 1, y: showPreloader ? 40 : 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 1, delay: 0.3 }}
         >
           <p className="text-primary text-xs tracking-[0.4em] uppercase mb-6">Meerut · Delhi NCR · North India</p>
           <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-6">
             Creating Extraordinary<br />Experiences Across<br />North India
           </h1>
           <p className="text-white/60 text-lg mb-10 tracking-wide">
-            Luxury Weddings &nbsp;·&nbsp; Corporate Events &nbsp;·&nbsp; Social Celebrations &nbsp;·&nbsp; Entertainment Experiences
+            Luxury Weddings &nbsp;·&nbsp; Corporate Events &nbsp;·&nbsp; Celebrity Shows &nbsp;·&nbsp; Entertainment
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/portfolio">
@@ -121,18 +140,20 @@ export default function Home() {
             </Link>
             <Link href="/contact">
               <span className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/40 text-white text-sm tracking-widest uppercase cursor-pointer hover:border-primary hover:text-primary transition-colors">
-                Start Your Journey
+                Enquire Now
               </span>
             </Link>
           </div>
-        </motion.div>
 
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-white/40"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        >
-          <ChevronDown size={24} />
+          {/* Scroll Indicator */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-white/40 hidden sm:block"
+            style={{ position: "absolute", bottom: "-80px" }}
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          >
+            <ChevronDown size={24} />
+          </motion.div>
         </motion.div>
       </section>
 
@@ -236,7 +257,7 @@ export default function Home() {
                   transition={{ delay: i * 0.07 }}
                 >
                   <Link href={`/services/${service.slug}`}>
-                    <div className="bg-background p-8 cursor-pointer group hover:bg-primary/5 transition-colors duration-300">
+                    <div className="bg-background p-8 cursor-pointer group hover:bg-primary/5 transition-colors duration-300 min-h-[200px]">
                       <p className="text-3xl mb-4">{service.icon}</p>
                       <h3 className="font-serif text-xl text-foreground mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
                       <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
@@ -247,6 +268,13 @@ export default function Home() {
                   </Link>
                 </motion.div>
               ))}
+            </div>
+            <div className="text-center mt-10">
+              <Link href="/services">
+                <span className="inline-flex items-center gap-2 text-sm text-primary tracking-widest uppercase cursor-pointer hover:gap-3 transition-all">
+                  Explore All Services <ArrowRight size={16} />
+                </span>
+              </Link>
             </div>
           </div>
         </section>
@@ -301,6 +329,21 @@ export default function Home() {
         </section>
       )}
 
+      {/* Founder Strip */}
+      <section className="py-14 bg-secondary/20 border-y border-border">
+        <div className="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8">
+          <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center text-primary font-serif text-2xl shrink-0">
+            R
+          </div>
+          <div>
+            <p className="font-serif text-xl md:text-2xl text-foreground italic leading-relaxed">
+              "Every event we produce carries my personal commitment to excellence. Shiva Group Events is not just a company — it's a promise."
+            </p>
+            <p className="text-primary text-sm tracking-wider mt-3">— Rajeev Gupta, Founder & Director</p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 bg-foreground text-background">
         <div className="max-w-3xl mx-auto px-6 text-center">
@@ -308,11 +351,21 @@ export default function Home() {
             <p className="text-primary text-xs tracking-[0.3em] uppercase mb-4">Begin Your Journey</p>
             <h2 className="font-serif text-4xl md:text-5xl text-background mb-6">Let's Create Something Extraordinary</h2>
             <p className="text-background/60 text-lg mb-10">Tell us about your event. We'll take care of the rest.</p>
-            <Link href="/contact">
-              <span className="inline-flex items-center gap-2 px-10 py-4 bg-primary text-primary-foreground text-sm tracking-widest uppercase cursor-pointer hover:bg-primary/90 transition-colors">
-                Start Planning <ArrowRight size={16} />
-              </span>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/contact">
+                <span className="inline-flex items-center gap-2 px-10 py-4 bg-primary text-primary-foreground text-sm tracking-widest uppercase cursor-pointer hover:bg-primary/90 transition-colors">
+                  Start Planning <ArrowRight size={16} />
+                </span>
+              </Link>
+              <a
+                href="https://wa.me/919999999999?text=Hi%2C%20I%20want%20to%20enquire%20about%20event%20planning."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-10 py-4 border border-white/30 text-white text-sm tracking-widest uppercase cursor-pointer hover:border-primary hover:text-primary transition-colors"
+              >
+                WhatsApp Us
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>

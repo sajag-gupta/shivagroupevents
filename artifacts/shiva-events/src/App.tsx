@@ -7,6 +7,8 @@ import NotFound from "@/pages/not-found";
 // Components
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { ChatBot } from "@/components/ChatBot";
 
 // Pages
 import Home from "@/pages/Home";
@@ -81,6 +83,9 @@ function App() {
       <TooltipProvider>
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
           <Router />
+          {/* Floating widgets — shown on all public pages */}
+          <WhatsAppButton />
+          <ChatBot />
         </WouterRouter>
         <Toaster />
       </TooltipProvider>

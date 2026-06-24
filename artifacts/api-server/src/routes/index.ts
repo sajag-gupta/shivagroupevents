@@ -7,6 +7,7 @@ import statsRouter from "./stats";
 import leadsRouter from "./leads";
 import authRouter from "./auth";
 import adminRouter from "./admin";
+import chatRouter from "./chat";
 
 const router: IRouter = Router();
 
@@ -17,6 +18,7 @@ router.use(testimonialsRouter);
 router.use(statsRouter);
 router.use(leadsRouter);
 router.use(authRouter);
-router.use(adminRouter);
+router.use("/admin", adminRouter);
+router.use(chatRouter);
 
 export default router;

@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+const logoImg = "/logo.png";
 
 const services = ["Luxury Weddings", "Corporate Events", "Social Celebrations", "Entertainment Management", "Event Production", "Technical Solutions"];
 const cities = ["Meerut", "Delhi", "Noida", "Greater Noida", "Ghaziabad", "Gurugram", "Faridabad", "Jaipur", "Chandigarh", "Dehradun"];
@@ -11,12 +12,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <p className="font-serif text-xl text-white mb-4">Shiva Group Events</p>
-            <p className="text-sm leading-relaxed text-white/50 mb-6">
-              Creating extraordinary experiences across North India since 2012. Premium event management for weddings, corporate events, and celebrations.
+            <img src={logoImg} alt="Shiva Group Events" className="h-16 w-auto object-contain mb-4" />
+            <p className="text-sm leading-relaxed text-white/50 mb-2">
+              Creating extraordinary experiences across North India since 2012.
+            </p>
+            <p className="text-xs text-white/40 mb-5">
+              Founded by <span className="text-primary">Rajeev Gupta</span>
             </p>
             <a
-              href="https://wa.me/919999999999"
+              href="https://wa.me/919999999999?text=Hi%20Shiva%20Group%20Events%2C%20I%20would%20like%20to%20enquire%20about%20your%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white text-sm px-4 py-2.5 transition-colors"
@@ -79,7 +83,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
-          <p>© {new Date().getFullYear()} Shiva Group Events. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Shiva Group Events. All rights reserved. | Rajeev Gupta</p>
           <div className="flex gap-6">
             <Link href="/about"><span className="hover:text-white/60 cursor-pointer transition-colors">About</span></Link>
             <Link href="/contact"><span className="hover:text-white/60 cursor-pointer transition-colors">Contact</span></Link>

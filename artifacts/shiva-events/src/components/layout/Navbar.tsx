@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+const logoImg = "/logo.png";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -39,9 +40,12 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
-          <span className="font-serif text-xl font-semibold tracking-wide cursor-pointer">
-            <span className="text-foreground">Shiva</span>
-            <span className="text-primary"> Group Events</span>
+          <span className="cursor-pointer flex items-center gap-2">
+            <img
+              src={logoImg}
+              alt="Shiva Group Events"
+              className="h-12 w-auto object-contain"
+            />
           </span>
         </Link>
 
