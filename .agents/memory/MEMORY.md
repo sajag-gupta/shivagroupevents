@@ -1,0 +1,2 @@
+- [Tailwind v4 Google Fonts](tailwind-v4-fonts.md) — In Tailwind v4, Google Fonts @import must go in HTML <link>, not CSS @import.
+- [Express async handler return types](express-async-handlers.md) — Express async handlers need `: Promise<void>` + early exits as `{ res.xxx(); return; }` not `return res.xxx()`.

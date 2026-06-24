@@ -1,0 +1,826 @@
+# SHIVA GROUP EVENTS – PREMIUM LUXURY EVENT MANAGEMENT WEBSITE
+
+## PROJECT VISION
+
+Build a world-class digital experience for Shiva Group Events, a premium event management company based in Meerut serving Delhi NCR and North India.
+
+This is NOT a standard business website.
+
+This website must function as:
+
+1. Brand Identity
+2. Premium Portfolio
+3. Lead Generation Engine
+4. Trust Building Platform
+5. Digital Showroom
+6. Sales Tool
+
+The website should create the same emotional reaction a client experiences when entering a beautifully executed luxury wedding, grand corporate event, celebrity show, or premium celebration.
+
+The goal is that a potential client visiting the website for the first time should immediately feel:
+
+* Professionalism
+* Elegance
+* Luxury
+* Reliability
+* Scale
+* Creativity
+* Trust
+* Attention to Detail
+
+The website itself should communicate:
+
+"We create experiences, not events."
+
+The final impression should be:
+
+"If their website looks this polished and thoughtfully designed, imagine how incredible their events must be."
+
+---
+
+# COMPANY POSITIONING
+
+Do NOT position Shiva Group Events as a local decorator or event vendor.
+
+Position the company as a premium event experience partner.
+
+Target Audience:
+
+* Luxury Wedding Clients
+* Affluent Families
+* Corporate Organizations
+* Educational Institutions
+* Government Organizations
+* Event Agencies Looking for Execution Partners
+* Hospitality Industry
+* High-End Private Clients
+
+Geographical Focus:
+
+* Meerut
+* Delhi
+* Noida
+* Greater Noida
+* Ghaziabad
+* Gurugram
+* Faridabad
+* Chandigarh
+* Jaipur
+* Dehradun
+* Entire North India
+
+---
+
+# TECHNOLOGY STACK
+
+Frontend:
+
+* Next.js 15 App Router
+* React 19
+* TypeScript
+* Tailwind CSS
+* Framer Motion
+* GSAP
+* Lenis Smooth Scroll
+
+Backend:
+
+* Node.js
+* Express.js
+* TypeScript
+
+Database:
+
+* MongoDB Atlas
+* Mongoose ODM
+
+Storage:
+
+* Cloudinary
+
+Deployment:
+
+* Vercel (Frontend)
+* Railway/Render/AWS (Backend)
+
+Architecture:
+
+* Production Ready
+* Scalable
+* Modular
+* SEO First
+
+---
+
+# AUTHENTICATION
+
+Public Users:
+No Login
+No Signup
+No User Accounts
+
+Admin:
+Protected Admin Panel
+
+Features:
+
+* JWT Authentication
+* HTTP Only Cookies
+* Refresh Token Flow
+* Secure Role Based Access
+
+Only One Role:
+Super Admin
+
+---
+
+# DESIGN PHILOSOPHY
+
+The website must feel like a premium editorial luxury brand.
+
+Reference Inspiration:
+
+* High-End Hospitality Websites
+* Luxury Wedding Brands
+* Premium Architecture Studios
+* Luxury Fashion Editorials
+* Apple Product Storytelling
+* Rolls Royce Visual Presentation
+
+Avoid:
+
+* Template Looking Sections
+* Generic Event Company Design
+* Excessive Gradients
+* Cheap Animations
+* Overcrowded Pages
+* Loud Colors
+
+The design should be timeless and sophisticated.
+
+---
+
+# THEME SYSTEM
+
+DEFAULT THEME:
+Luxury Light Theme
+
+Dark Mode:
+Optional Toggle
+
+Light Theme Colors:
+
+Background:
+#FAF9F6
+
+Surface:
+#FFFFFF
+
+Primary Text:
+#111111
+
+Secondary Text:
+#666666
+
+Accent:
+#C9A227
+
+Borders:
+#EAEAEA
+
+Dark Theme Colors:
+
+Background:
+#0F0F0F
+
+Surface:
+#181818
+
+Primary Text:
+#FFFFFF
+
+Secondary Text:
+#B5B5B5
+
+Accent:
+#D4AF37
+
+Dark mode must feel like an evening luxury event.
+
+---
+
+# TYPOGRAPHY
+
+Headings:
+Playfair Display
+
+Body:
+Inter
+
+Luxury spacing.
+
+Strong hierarchy.
+
+Large elegant headings.
+
+Editorial feel.
+
+---
+
+# WEBSITE EXPERIENCE
+
+The website should feel like a journey.
+
+Not a collection of sections.
+
+Every transition should feel intentional.
+
+Features:
+
+* Smooth Scrolling
+* Cinematic Page Transitions
+* Scroll Storytelling
+* Image Reveal Animations
+* Elegant Hover States
+* Premium Loading States
+* Subtle Motion Effects
+* Scroll-triggered Visual Sequences
+
+Animations must enhance storytelling.
+
+Never distract from content.
+
+---
+
+# PRELOADER EXPERIENCE
+
+Create a premium cinematic preloader.
+
+Sequence:
+
+1. Shiva Group Events Logo Reveal
+2. Elegant Motion Graphics
+3. Short Cinematic Event Footage
+4. Smooth Transition Into Homepage
+
+Duration:
+2–3 seconds maximum
+
+Should feel premium, not annoying.
+
+---
+
+# HOMEPAGE
+
+The homepage should be the strongest page on the website.
+
+It should immediately establish trust and emotional connection.
+
+---
+
+# HERO SECTION
+
+Full-screen immersive hero.
+
+Background:
+Autoplay cinematic event video.
+
+Content Examples:
+
+* Luxury Weddings
+* Stage Reveals
+* Corporate Events
+* Live Entertainment
+* Event Production
+* Guest Reactions
+* Decor Details
+
+Video Requirements:
+
+* Professionally Color Graded
+* Cinematic
+* Slow Motion Sequences
+* High Quality
+
+Overlay:
+Luxury subtle gradient
+
+Headline:
+
+Creating Extraordinary Experiences Across North India
+
+Subheadline:
+
+Luxury Weddings • Corporate Events • Social Celebrations • Entertainment Experiences
+
+Buttons:
+
+View Our Work
+
+Start Your Event Journey
+
+Include:
+Subtle scroll indicator
+
+---
+
+# TRUST SECTION
+
+Immediately after hero.
+
+Display:
+
+* Years of Experience
+* Events Executed
+* Cities Served
+* Happy Clients
+
+Visual presentation should feel premium.
+
+Not like statistic cards.
+
+---
+
+# FEATURED EXPERIENCES
+
+Showcase flagship projects.
+
+Large immersive cards.
+
+Each card contains:
+
+* Cover Image
+* Project Name
+* Location
+* Event Type
+* Short Story
+
+Hover interactions.
+
+Click opens detailed case study.
+
+---
+
+# ABOUT SECTION
+
+Tell the company story.
+
+Not generic corporate text.
+
+Include:
+
+* Brand Story
+* Philosophy
+* Mission
+* Vision
+* Founder Message
+
+Use editorial storytelling layout.
+
+---
+
+# SERVICES SECTION
+
+Present services as experiences.
+
+Categories:
+
+Wedding Experiences
+
+Corporate Experiences
+
+Social Celebrations
+
+Entertainment Management
+
+Event Production
+
+Technical Solutions
+
+Each service gets:
+
+* Dedicated Page
+* Hero Banner
+* Gallery
+* Service Details
+* FAQs
+* SEO Optimization
+
+---
+
+# PORTFOLIO SYSTEM
+
+This is the most important feature.
+
+Do NOT create a simple gallery.
+
+Build a professional portfolio management system.
+
+Portfolio Categories:
+
+Luxury Weddings
+
+Corporate Events
+
+Award Ceremonies
+
+Celebrity Shows
+
+Concerts
+
+Brand Activations
+
+Private Events
+
+College Festivals
+
+Each Portfolio Entry:
+
+Title
+
+Slug
+
+Cover Image
+
+Images
+
+Videos
+
+Location
+
+Date
+
+Description
+
+Event Story
+
+Challenges
+
+Execution Details
+
+Results
+
+Client Feedback
+
+SEO Metadata
+
+Related Projects
+
+---
+
+# EXPERIENCE CASE STUDIES
+
+Create a dedicated Experiences section.
+
+These are immersive project stories.
+
+Examples:
+
+1500 Guest Wedding Experience
+
+Luxury Reception Experience
+
+Corporate Annual Meet
+
+Celebrity Night Production
+
+Each experience should feel like reading a premium magazine feature.
+
+Heavy use of visuals.
+
+Strong storytelling.
+
+---
+
+# TESTIMONIALS
+
+Support:
+
+Video Testimonials
+
+Written Testimonials
+
+Client Photos
+
+Company Logos
+
+Ratings
+
+Elegant Carousel
+
+Grid Layout Option
+
+---
+
+# CITIES WE SERVE
+
+Dedicated SEO Pages:
+
+Meerut
+
+Delhi
+
+Noida
+
+Greater Noida
+
+Ghaziabad
+
+Gurugram
+
+Faridabad
+
+Jaipur
+
+Chandigarh
+
+Dehradun
+
+Each page should include:
+
+Unique Content
+
+Local Portfolio References
+
+FAQs
+
+Service Areas
+
+Local SEO Optimization
+
+---
+
+# GALLERY EXPERIENCE
+
+Create immersive gallery.
+
+Features:
+
+* Masonry Layout
+* Fullscreen View
+* Video Support
+* Category Filters
+* Smooth Animations
+* Lazy Loading
+
+Must feel premium.
+
+---
+
+# CONTACT PAGE
+
+Luxury inquiry experience.
+
+Fields:
+
+Name
+
+Phone
+
+Email
+
+Event Type
+
+Location
+
+Event Date
+
+Guest Count
+
+Budget Range
+
+Message
+
+Integrations:
+
+WhatsApp
+
+Email
+
+Phone Call
+
+Google Maps
+
+Store all leads in database.
+
+---
+
+# ADMIN PANEL
+
+Modern professional dashboard.
+
+Sections:
+
+Dashboard
+
+Portfolio
+
+Experiences
+
+Services
+
+Testimonials
+
+Cities
+
+Media Library
+
+Contact Leads
+
+Website Settings
+
+SEO Settings
+
+Homepage Content
+
+Analytics Overview
+
+---
+
+# MEDIA LIBRARY
+
+Upload:
+
+Images
+
+Videos
+
+Hero Videos
+
+Banners
+
+Gallery Assets
+
+Store in Cloudinary.
+
+Automatic optimization.
+
+---
+
+# LEAD MANAGEMENT
+
+Features:
+
+Lead Listing
+
+Lead Details
+
+Status Tracking
+
+New
+
+Contacted
+
+Qualified
+
+Proposal Sent
+
+Converted
+
+Closed
+
+Internal Notes
+
+Search
+
+Filters
+
+CSV Export
+
+---
+
+# CMS CAPABILITIES
+
+Everything should be editable.
+
+No hardcoded content.
+
+Admin can manage:
+
+Homepage
+
+About
+
+Services
+
+Portfolio
+
+Experiences
+
+Testimonials
+
+FAQs
+
+Cities
+
+SEO
+
+Media
+
+Statistics
+
+Contact Information
+
+Without changing code.
+
+---
+
+# SEO REQUIREMENTS
+
+Extremely Important.
+
+Implement:
+
+Dynamic Metadata
+
+Open Graph
+
+Twitter Cards
+
+Schema Markup
+
+Local Business Schema
+
+Organization Schema
+
+FAQ Schema
+
+Breadcrumb Schema
+
+Canonical URLs
+
+robots.txt
+
+XML Sitemap
+
+Image SEO
+
+Video SEO
+
+Structured Data
+
+Generate SEO-friendly URLs.
+
+---
+
+# PERFORMANCE REQUIREMENTS
+
+Lighthouse Targets:
+
+Performance: 95+
+
+Accessibility: 95+
+
+SEO: 100
+
+Best Practices: 100
+
+Implement:
+
+Lazy Loading
+
+Code Splitting
+
+Image Optimization
+
+Video Optimization
+
+Caching
+
+CDN Delivery
+
+Server Components
+
+Incremental Static Regeneration
+
+---
+
+# MOBILE EXPERIENCE
+
+Must be designed mobile-first.
+
+Not desktop squeezed into mobile.
+
+Premium interactions.
+
+Fast loading.
+
+Touch optimized.
+
+Responsive on all devices.
+
+---
+
+# FINAL GOAL
+
+The website should not feel like a company website.
+
+It should feel like a luxury digital experience.
+
+The client should leave the website with complete confidence that Shiva Group Events can successfully execute premium weddings, corporate events, entertainment experiences, and large-scale productions.
+
+The website itself should become the strongest portfolio and sales asset of the company.
+
+Every page should communicate one message:
+
+"We don't just manage events. We create unforgettable experiences."

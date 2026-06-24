@@ -3,20 +3,34 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Shiva Group Events API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: portfolio
+    description: Portfolio management
+  - name: services
+    description: Services
+  - name: testimonials
+    description: Testimonials
+  - name: leads
+    description: Contact leads
+  - name: stats
+    description: Site statistics
+  - name: auth
+    description: Admin authentication
+  - name: admin
+    description: Admin operations
+
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,13 +38,819 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  # ── Public: Portfolio ──────────────────────────────────────────────────
+  /portfolio:
+    get:
+      operationId: listPortfolio
+      tags: [portfolio]
+      summary: List portfolio items
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Portfolio list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PortfolioListResponse"
+
+  /portfolio/featured:
+    get:
+      operationId: getFeaturedPortfolio
+      tags: [portfolio]
+      summary: Get featured portfolio items
+      responses:
+        "200":
+          description: Featured items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PortfolioItem"
+
+  /portfolio/{slug}:
+    get:
+      operationId: getPortfolioItem
+      tags: [portfolio]
+      summary: Get a single portfolio item by slug
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Portfolio item
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PortfolioItem"
+        "404":
+          description: Not found
+
+  # ── Public: Services ───────────────────────────────────────────────────
+  /services:
+    get:
+      operationId: listServices
+      tags: [services]
+      summary: List all services
+      responses:
+        "200":
+          description: Services list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Service"
+
+  /services/{slug}:
+    get:
+      operationId: getService
+      tags: [services]
+      summary: Get service by slug
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Service detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Service"
+        "404":
+          description: Not found
+
+  # ── Public: Testimonials ───────────────────────────────────────────────
+  /testimonials:
+    get:
+      operationId: listTestimonials
+      tags: [testimonials]
+      summary: List published testimonials
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Testimonials list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Testimonial"
+
+  # ── Public: Stats ──────────────────────────────────────────────────────
+  /stats:
+    get:
+      operationId: getSiteStats
+      tags: [stats]
+      summary: Get site-wide statistics
+      responses:
+        "200":
+          description: Stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SiteStats"
+
+  # ── Public: Contact / Lead Submission ─────────────────────────────────
+  /leads:
+    post:
+      operationId: submitLead
+      tags: [leads]
+      summary: Submit a contact/inquiry form
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadInput"
+      responses:
+        "201":
+          description: Lead submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        "400":
+          description: Validation error
+
+  # ── Admin: Auth ────────────────────────────────────────────────────────
+  /auth/login:
+    post:
+      operationId: adminLogin
+      tags: [auth]
+      summary: Admin login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdminCredentials"
+      responses:
+        "200":
+          description: Logged in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+        "401":
+          description: Invalid credentials
+
+  /auth/logout:
+    post:
+      operationId: adminLogout
+      tags: [auth]
+      summary: Admin logout
+      responses:
+        "200":
+          description: Logged out
+
+  /auth/me:
+    get:
+      operationId: getAdminMe
+      tags: [auth]
+      summary: Get current admin session
+      responses:
+        "200":
+          description: Admin info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+        "401":
+          description: Not authenticated
+
+  # ── Admin: Leads ───────────────────────────────────────────────────────
+  /admin/leads:
+    get:
+      operationId: adminListLeads
+      tags: [admin]
+      summary: List all leads
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Leads list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LeadListResponse"
+        "401":
+          description: Unauthorized
+
+  /admin/leads/{id}:
+    get:
+      operationId: adminGetLead
+      tags: [admin]
+      summary: Get lead by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Lead detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+
+    patch:
+      operationId: adminUpdateLead
+      tags: [admin]
+      summary: Update lead status or notes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        "401":
+          description: Unauthorized
+
+  # ── Admin: Portfolio ───────────────────────────────────────────────────
+  /admin/portfolio:
+    get:
+      operationId: adminListPortfolio
+      tags: [admin]
+      summary: Admin list portfolio
+      responses:
+        "200":
+          description: Portfolio list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PortfolioListResponse"
+        "401":
+          description: Unauthorized
+    post:
+      operationId: adminCreatePortfolio
+      tags: [admin]
+      summary: Create portfolio item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PortfolioInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PortfolioItem"
+        "401":
+          description: Unauthorized
+
+  /admin/portfolio/{id}:
+    patch:
+      operationId: adminUpdatePortfolio
+      tags: [admin]
+      summary: Update portfolio item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PortfolioUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PortfolioItem"
+        "401":
+          description: Unauthorized
+
+    delete:
+      operationId: adminDeletePortfolio
+      tags: [admin]
+      summary: Delete portfolio item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Deleted
+        "401":
+          description: Unauthorized
+
+  # ── Admin: Testimonials ────────────────────────────────────────────────
+  /admin/testimonials:
+    get:
+      operationId: adminListTestimonials
+      tags: [admin]
+      summary: Admin list testimonials
+      responses:
+        "200":
+          description: Testimonials
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Testimonial"
+        "401":
+          description: Unauthorized
+
+    post:
+      operationId: adminCreateTestimonial
+      tags: [admin]
+      summary: Create testimonial
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TestimonialInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Testimonial"
+        "401":
+          description: Unauthorized
+
+  /admin/testimonials/{id}:
+    patch:
+      operationId: adminUpdateTestimonial
+      tags: [admin]
+      summary: Update testimonial
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TestimonialUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Testimonial"
+        "401":
+          description: Unauthorized
+
+    delete:
+      operationId: adminDeleteTestimonial
+      tags: [admin]
+      summary: Delete testimonial
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Deleted
+        "401":
+          description: Unauthorized
+
+  # ── Admin: Dashboard Stats ─────────────────────────────────────────────
+  /admin/dashboard:
+    get:
+      operationId: adminGetDashboard
+      tags: [admin]
+      summary: Admin dashboard summary
+      responses:
+        "200":
+          description: Dashboard data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminDashboard"
+        "401":
+          description: Unauthorized
+
 components:
   schemas:
     HealthStatus:
       type: object
+      required: [status]
       properties:
         status:
           type: string
-      required:
-        - status
 
+    # ── Portfolio ──────────────────────────────────────────────────────
+    PortfolioItem:
+      type: object
+      required: [id, title, slug, category, coverImage, location, eventDate, description, featured, published, createdAt]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        slug:
+          type: string
+        category:
+          type: string
+          description: "luxury-weddings | corporate-events | award-ceremonies | celebrity-shows | concerts | brand-activations | private-events | college-festivals"
+        coverImage:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+        location:
+          type: string
+        eventDate:
+          type: string
+        description:
+          type: string
+        story:
+          type: ["string", "null"]
+        clientName:
+          type: ["string", "null"]
+        guestCount:
+          type: ["integer", "null"]
+        featured:
+          type: boolean
+        published:
+          type: boolean
+        createdAt:
+          type: string
+
+    PortfolioListResponse:
+      type: object
+      required: [items, total]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/PortfolioItem"
+        total:
+          type: integer
+
+    PortfolioInput:
+      type: object
+      required: [title, slug, category, coverImage, location, eventDate, description]
+      properties:
+        title:
+          type: string
+        slug:
+          type: string
+        category:
+          type: string
+        coverImage:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+        location:
+          type: string
+        eventDate:
+          type: string
+        description:
+          type: string
+        story:
+          type: string
+        clientName:
+          type: string
+        guestCount:
+          type: integer
+        featured:
+          type: boolean
+        published:
+          type: boolean
+
+    PortfolioUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+        slug:
+          type: string
+        category:
+          type: string
+        coverImage:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+        location:
+          type: string
+        eventDate:
+          type: string
+        description:
+          type: string
+        story:
+          type: string
+        clientName:
+          type: string
+        guestCount:
+          type: integer
+        featured:
+          type: boolean
+        published:
+          type: boolean
+
+    # ── Services ──────────────────────────────────────────────────────
+    Service:
+      type: object
+      required: [id, title, slug, description, icon, category, sortOrder]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        slug:
+          type: string
+        description:
+          type: string
+        longDescription:
+          type: ["string", "null"]
+        icon:
+          type: string
+        category:
+          type: string
+        heroImage:
+          type: ["string", "null"]
+        features:
+          type: array
+          items:
+            type: string
+        sortOrder:
+          type: integer
+
+    # ── Testimonials ───────────────────────────────────────────────────
+    Testimonial:
+      type: object
+      required: [id, clientName, rating, content, published, createdAt]
+      properties:
+        id:
+          type: integer
+        clientName:
+          type: string
+        designation:
+          type: ["string", "null"]
+        company:
+          type: ["string", "null"]
+        eventType:
+          type: ["string", "null"]
+        rating:
+          type: integer
+        content:
+          type: string
+        photoUrl:
+          type: ["string", "null"]
+        published:
+          type: boolean
+        createdAt:
+          type: string
+
+    TestimonialInput:
+      type: object
+      required: [clientName, rating, content]
+      properties:
+        clientName:
+          type: string
+        designation:
+          type: string
+        company:
+          type: string
+        eventType:
+          type: string
+        rating:
+          type: integer
+        content:
+          type: string
+        photoUrl:
+          type: string
+        published:
+          type: boolean
+
+    TestimonialUpdate:
+      type: object
+      properties:
+        clientName:
+          type: string
+        designation:
+          type: string
+        company:
+          type: string
+        eventType:
+          type: string
+        rating:
+          type: integer
+        content:
+          type: string
+        photoUrl:
+          type: string
+        published:
+          type: boolean
+
+    # ── Site Stats ─────────────────────────────────────────────────────
+    SiteStats:
+      type: object
+      required: [yearsOfExperience, eventsExecuted, citiesServed, happyClients]
+      properties:
+        yearsOfExperience:
+          type: integer
+        eventsExecuted:
+          type: integer
+        citiesServed:
+          type: integer
+        happyClients:
+          type: integer
+
+    # ── Leads ──────────────────────────────────────────────────────────
+    Lead:
+      type: object
+      required: [id, name, phone, email, eventType, status, createdAt]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        eventType:
+          type: string
+        location:
+          type: ["string", "null"]
+        eventDate:
+          type: ["string", "null"]
+        guestCount:
+          type: ["integer", "null"]
+        budgetRange:
+          type: ["string", "null"]
+        message:
+          type: ["string", "null"]
+        status:
+          type: string
+          description: "new | contacted | qualified | proposal-sent | converted | closed"
+        internalNotes:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+
+    LeadInput:
+      type: object
+      required: [name, phone, email, eventType]
+      properties:
+        name:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        eventType:
+          type: string
+        location:
+          type: string
+        eventDate:
+          type: string
+        guestCount:
+          type: integer
+        budgetRange:
+          type: string
+        message:
+          type: string
+
+    LeadUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+        internalNotes:
+          type: string
+
+    LeadListResponse:
+      type: object
+      required: [items, total]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Lead"
+        total:
+          type: integer
+
+    # ── Auth ───────────────────────────────────────────────────────────
+    AdminCredentials:
+      type: object
+      required: [password]
+      properties:
+        password:
+          type: string
+
+    AuthResponse:
+      type: object
+      required: [authenticated]
+      properties:
+        authenticated:
+          type: boolean
+        role:
+          type: ["string", "null"]
+
+    # ── Admin Dashboard ────────────────────────────────────────────────
+    AdminDashboard:
+      type: object
+      required: [totalLeads, newLeads, totalPortfolio, totalTestimonials, leadsByStatus, recentLeads]
+      properties:
+        totalLeads:
+          type: integer
+        newLeads:
+          type: integer
+        totalPortfolio:
+          type: integer
+        totalTestimonials:
+          type: integer
+        leadsByStatus:
+          type: array
+          items:
+            $ref: "#/components/schemas/LeadStatusCount"
+        recentLeads:
+          type: array
+          items:
+            $ref: "#/components/schemas/Lead"
+
+    LeadStatusCount:
+      type: object
+      required: [status, count]
+      properties:
+        status:
+          type: string
+        count:
+          type: integer
