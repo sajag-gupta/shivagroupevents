@@ -10,7 +10,7 @@
     "build:client": "tsc -p client/tsconfig.json && vite build client",
     "build:server": "node server/build.mjs",
     "build": "npm run build:client && npm run build:server",
-    "start": "cross-env NODE_ENV=production node --env-file=.env --enable-source-maps server/dist/index.mjs",
+    "start": "cross-env NODE_ENV=production node --enable-source-maps server/dist/index.mjs",
     "db:push": "drizzle-kit push --config=server/drizzle.config.ts",
     "db:studio": "drizzle-kit studio --config=server/drizzle.config.ts"
   },
