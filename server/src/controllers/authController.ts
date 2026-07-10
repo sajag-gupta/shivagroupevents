@@ -13,16 +13,16 @@ export function login(req: Request, res: Response): void {
     res.status(401).json({ error: "Invalid credentials" });
     return;
   }
-  (req.session as Record<string, unknown>).admin = true;
+  (req.session as any).admin = true;
   res.json({ authenticated: true, role: "admin" });
 }
 
 export function logout(req: Request, res: Response): void {
-  (req.session as Record<string, unknown>).admin = false;
+  (req.session as any).admin = false;
   res.json({ authenticated: false, role: null });
 }
 
 export function getMe(req: Request, res: Response): void {
-  const isAdmin = !!(req.session as Record<string, unknown>)?.admin;
+  const isAdmin = !!(req.session as any)?.admin;
   res.json({ authenticated: isAdmin, role: isAdmin ? "admin" : null });
 }

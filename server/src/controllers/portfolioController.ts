@@ -38,7 +38,7 @@ export async function getPortfolioBySlug(req: Request, res: Response): Promise<v
   const item = await db
     .select()
     .from(portfolioTable)
-    .where(eq(portfolioTable.slug, req.params.slug))
+    .where(eq(portfolioTable.slug, req.params.slug as string))
     .limit(1);
   if (!item[0]) {
     res.status(404).json({ error: "Portfolio item not found" });
