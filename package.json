@@ -7,7 +7,7 @@
     "dev:server": "tsx watch --env-file=.env server/index.ts",
     "dev:client": "vite client",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
-    "build:client": "npx tsc -p client/tsconfig.json && npx vite build client",
+    "build:client": "tsc -p client/tsconfig.json && vite build client",
     "build:server": "node server/build.mjs",
     "build": "npm run build:client",
     "start": "cross-env NODE_ENV=production node --enable-source-maps server/dist/index.mjs",
