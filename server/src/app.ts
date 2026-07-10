@@ -4,6 +4,7 @@ import { pinoHttp } from "pino-http";
 import session from "express-session";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import fs from "node:fs";
 import router from "./routes/index.js";
 import { logger } from "./utils/logger.js";
 import { errorHandler } from "./middleware/errorHandler.js";
@@ -50,17 +51,25 @@ app.use(
 // ─── Routes ──────────────────────────────────────────────────────────────────
 app.use("/api", router);
 
-// Serve frontend static files in production or standard single-server deployment
+// Serve frontend static files in production or standard single-server deployment if present
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const clientDistPath = path.resolve(__dirname, "../../client/dist");
-  app.use(express.static(clientDistPath));
   
-  // SPA routing fallback
-  app.get("/{*splat}", (req, res) => {
-    res.sendFile(path.join(clientDistPath, "index.html"));
-  });
+  if (fs.existsSync(clientDistPath)) {
+    app.use(express.static(clientDistPath));
+    
+    // SPA routing fallback
+    app.get("/{*splat}", (req, res) => {
+      res.sendFile(path.join(clientDistPath, "index.html"));
+    });
+  }
 }
+
+// Fallback for API root (useful for health checks and verifying backend is running)
+app.get("/", (req, res) => {
+  res.json({ status: "ok", message: "Shiva Luxury Events API is running." });
+});
 
 // ─── Global Error Handler ─────────────────────────────────────────────────────
 app.use(errorHandler);
