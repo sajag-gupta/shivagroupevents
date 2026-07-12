@@ -124,22 +124,36 @@ export default function Contact() {
             <p className="text-primary text-xs tracking-widest uppercase mb-5">Direct Contact</p>
             <ul className="space-y-5">
               <li>
-                <a href="https://wa.me/917060061117" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
+                <div className="flex items-start gap-4">
                   <MessageCircle size={18} className="text-primary mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">WhatsApp</p>
-                    <p className="text-muted-foreground text-sm">+91 7060061117</p>
+                    <p className="text-sm font-medium text-foreground mb-1">WhatsApp</p>
+                    <div className="flex flex-col gap-1.5">
+                      <a href="https://wa.me/919897015153" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary text-sm transition-colors">
+                        +91 9897015153
+                      </a>
+                      <a href="https://wa.me/919219708567" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary text-sm transition-colors">
+                        +91 92197 08567
+                      </a>
+                    </div>
                   </div>
-                </a>
+                </div>
               </li>
               <li>
-                <a href="tel:+917060061117" className="flex items-start gap-4 group">
+                <div className="flex items-start gap-4">
                   <Phone size={18} className="text-primary mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">Phone</p>
-                    <p className="text-muted-foreground text-sm">+91 7060061117</p>
+                    <p className="text-sm font-medium text-foreground mb-1">Phone</p>
+                    <div className="flex flex-col gap-1.5">
+                      <a href="tel:+919897015153" className="text-muted-foreground hover:text-primary text-sm transition-colors">
+                        +91 9897015153
+                      </a>
+                      <a href="tel:+919219708567" className="text-muted-foreground hover:text-primary text-sm transition-colors">
+                        +91 92197 08567
+                      </a>
+                    </div>
                   </div>
-                </a>
+                </div>
               </li>
               <li>
                 <a href="mailto:[EMAIL_ADDRESS]" className="flex items-start gap-4 group">

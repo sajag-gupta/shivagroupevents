@@ -10,7 +10,7 @@ const cities = ["Meerut", "Delhi", "Noida", "Greater Noida", "Ghaziabad", "Gurug
 export function Footer() {
   const { data: settings } = useGetSettings();
   const phone = settings?.phone ?? "+91 70600 61117";
-  const email = settings?.email ?? "sajag.guitar@gmail.com";
+  const email = settings?.email ?? "rajeev.event@gmail.com";
   const rawPhone = phone.replace(/[^0-9]/g, "");
 
   return (

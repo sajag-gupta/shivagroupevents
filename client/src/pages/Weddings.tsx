@@ -490,7 +490,7 @@ export default function Weddings() {
   const selectedWedding = WEDDING_TYPES.find(w => w.id === activeWeddingType);
   const selectedFeatured = FEATURED_WEDDINGS.find(w => w.id === activeFeatured);
   const filteredVideos = VIDEO_GALLERY.filter(v => activeVideoCategory === "All" || v.cat === activeVideoCategory);
-  
+
   const filteredPhotos = displayPhotos.filter(p => {
     if (activePhotoCategory === "All") return true;
     // For database photos, check substring match in title/description metadata
@@ -944,7 +944,7 @@ export default function Weddings() {
         </div>
       </section>
 
-            {/* Featured Wedding Modal */}
+      {/* Featured Wedding Modal */}
       <AnimatePresence>
         {selectedFeatured && (
           <motion.div
@@ -1275,20 +1275,30 @@ export default function Weddings() {
               <span className="text-[#C9A227]">Dream Wedding?</span>
             </h2>
             <p className="text-white/50 text-lg font-sans mb-12">Let's create memories that last a lifetime. Talk to our wedding specialists today.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
               <Link href="/contact">
                 <span className="inline-flex items-center gap-2 px-10 py-5 bg-[#C9A227] text-black text-sm tracking-widest uppercase font-semibold cursor-pointer hover:bg-[#B8911E] transition-all duration-300">
                   Book Consultation <ArrowRight size={16} />
                 </span>
               </Link>
-              <a href="tel:+917060061117">
-                <span className="inline-flex items-center gap-2 px-10 py-5 border border-white/20 text-white text-sm tracking-widest uppercase cursor-pointer hover:border-[#C9A227] hover:text-[#C9A227] transition-all duration-300">
-                  <Phone size={16} /> Call Now
+              <a href="tel:+919897015153">
+                <span className="inline-flex items-center gap-2 px-6 py-5 border border-white/20 text-white text-sm tracking-widest uppercase cursor-pointer hover:border-[#C9A227] hover:text-[#C9A227] transition-all duration-300">
+                  <Phone size={16} /> Call: 98970 15153
                 </span>
               </a>
-              <a href="https://wa.me/917060061117" target="_blank" rel="noopener noreferrer">
-                <span className="inline-flex items-center gap-2 px-10 py-5 border border-white/20 text-white text-sm tracking-widest uppercase cursor-pointer hover:border-green-500 hover:text-green-400 transition-all duration-300">
-                  <MessageCircle size={16} /> WhatsApp
+              <a href="tel:+919219708567">
+                <span className="inline-flex items-center gap-2 px-6 py-5 border border-white/20 text-white text-sm tracking-widest uppercase cursor-pointer hover:border-[#C9A227] hover:text-[#C9A227] transition-all duration-300">
+                  <Phone size={16} /> Call: 92197 08567
+                </span>
+              </a>
+              <a href="https://wa.me/919897015153" target="_blank" rel="noopener noreferrer">
+                <span className="inline-flex items-center gap-2 px-6 py-5 border border-white/20 text-white text-sm tracking-widest uppercase cursor-pointer hover:border-green-500 hover:text-green-400 transition-all duration-300">
+                  <MessageCircle size={16} /> WhatsApp: 98970 15153
+                </span>
+              </a>
+              <a href="https://wa.me/919219708567" target="_blank" rel="noopener noreferrer">
+                <span className="inline-flex items-center gap-2 px-6 py-5 border border-white/20 text-white text-sm tracking-widest uppercase cursor-pointer hover:border-green-500 hover:text-green-400 transition-all duration-300">
+                  <MessageCircle size={16} /> WhatsApp: 92197 08567
                 </span>
               </a>
             </div>

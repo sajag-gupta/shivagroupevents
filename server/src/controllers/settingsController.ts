@@ -5,7 +5,7 @@ import { eq } from "drizzle-orm";
 import { z } from "zod";
 
 const DEFAULT_PHONE = process.env.CONTACT_PHONE ?? "+91 70600 61117";
-const DEFAULT_EMAIL = process.env.CONTACT_EMAIL ?? "sajag.guitar@gmail.com";
+const DEFAULT_EMAIL = process.env.CONTACT_EMAIL ?? "rajeev.event@gmail.com";
 
 const UpdateSettingsBody = z.object({
   phone: z.string().min(1),

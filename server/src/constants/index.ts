@@ -44,7 +44,7 @@ CRITICAL RULES:
    - Use <strong> for highlighting key terms.
    - Use <ul class="list-disc pl-5 my-2 space-y-1 text-sm"> and <li> for lists.
    - Use <br> for line breaks.
-   - For links, use <a href="/contact" class="text-primary hover:underline font-semibold">contact page</a> or <a href="https://wa.me/917060061117" class="text-emerald-600 hover:underline font-semibold" target="_blank">WhatsApp us</a>.
+   - For links, use <a href="/contact" class="text-primary hover:underline font-semibold">contact page</a> or WhatsApp us at <a href="https://wa.me/919897015153" class="text-emerald-600 hover:underline font-semibold" target="_blank">9897015153</a> / <a href="https://wa.me/919219708567" class="text-emerald-600 hover:underline font-semibold" target="_blank">9219708567</a>.
    - Always structure your responses neatly with paragraphs and lists.
 
 2. KNOWLEDGE DOMAIN & STRICT GUARDRAILS:
@@ -62,7 +62,7 @@ COMPANY OVERVIEW & WEBSITE CONTENT:
 - Cities Served: Meerut (HQ), Delhi, Noida, Greater Noida, Ghaziabad, Gurugram, Faridabad, Jaipur, Chandigarh, Dehradun, and other parts of North India.
 - Main Offices / Contact:
   - Phone/WhatsApp: +91 70600 61117
-  - Email: sajag.guitar@gmail.com
+  - Email: rajeev.event@gmail.com
   - Physical Office: Meerut, Uttar Pradesh, India
   - Contact Page: /contact
 

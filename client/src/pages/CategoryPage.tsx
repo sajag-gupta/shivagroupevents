@@ -752,15 +752,20 @@ export default function CategoryPage({ config }: { config: CategoryPageConfig })
               <span style={{ color: c }}>Next Event?</span>
             </h2>
             <p className="text-white/50 text-lg font-sans mb-10">Let's create an unforgettable experience. Talk to our specialists today.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
               <Link href="/contact">
                 <span className="inline-flex items-center gap-2 px-10 py-5 text-black text-sm tracking-widest uppercase font-semibold cursor-pointer transition-all duration-300 hover:opacity-90" style={{ background: c }}>
                   Book Consultation <ArrowRight size={15} />
                 </span>
               </Link>
-              <a href="tel:+917060061117">
-                <span className="inline-flex items-center gap-2 px-10 py-5 border border-white/30 text-white text-sm tracking-widest uppercase cursor-pointer hover:border-white/60 transition-all duration-300">
-                  <Phone size={14} /> Call Now
+              <a href="tel:+919897015153">
+                <span className="inline-flex items-center gap-2 px-6 py-5 border border-white/30 text-white text-sm tracking-widest uppercase cursor-pointer hover:border-white/60 transition-all duration-300">
+                  <Phone size={14} /> Call: 98970 15153
+                </span>
+              </a>
+              <a href="tel:+919219708567">
+                <span className="inline-flex items-center gap-2 px-6 py-5 border border-white/30 text-white text-sm tracking-widest uppercase cursor-pointer hover:border-white/60 transition-all duration-300">
+                  <Phone size={14} /> Call: 92197 08567
                 </span>
               </a>
             </div>
