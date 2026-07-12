@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Award, Users, Star, MapPin } from "lucide-react";
+import { useSEO, ORGANIZATION_SCHEMA, breadcrumbSchema } from "@/lib/seo";
 
 const milestones = [
   { year: "2012", event: "Founded in Meerut with a vision to redefine luxury events in North India." },
@@ -11,6 +12,13 @@ const milestones = [
 ];
 
 export default function About() {
+  useSEO({
+    title: "About Shiva Group Events — Founded 2012 in Meerut, North India",
+    description: "Shiva Group Events was founded in 2012 in Meerut by Rajeev Gupta. Learn about our 12+ years of excellence in luxury event management across North India — 1500+ events, 850+ satisfied clients, 15+ cities.",
+    canonical: "/about",
+    keywords: "about Shiva Group Events, Rajeev Gupta event planner, event company Meerut history, top event management company North India, luxury events since 2012",
+    schema: [ORGANIZATION_SCHEMA, breadcrumbSchema([{ name: "Home", url: "/" }, { name: "About Us", url: "/about" }])],
+  });
   return (
     <div className="min-h-screen bg-background pt-20">
       {/* Hero */}

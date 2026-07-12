@@ -1,4 +1,5 @@
 import CategoryPage, { CategoryPageConfig } from "./CategoryPage";
+import { useSEO, serviceSchema, breadcrumbSchema } from "@/lib/seo";
 
 const config: CategoryPageConfig = {
   accentColor: "#EC4899",
@@ -96,5 +97,15 @@ const config: CategoryPageConfig = {
 };
 
 export default function PrivateEvents() {
+  useSEO({
+    title: "Private Event Planners in Meerut | Birthday, Anniversary & VIP Parties",
+    description: "Shiva Group Events — premium private event planners in Meerut and North India. Expert birthday parties, anniversaries, engagement ceremonies, and VIP private gatherings with bespoke themes and luxury setups.",
+    canonical: "/services/private-events",
+    keywords: "private event planner Meerut, birthday party organizer Meerut, anniversary event planner UP, VIP party organizer North India, intimate celebration planner, private party company Meerut",
+    schema: [
+      serviceSchema("Private Events", "Premium private event planning in Meerut — birthday parties, anniversaries, engagement ceremonies, and VIP gatherings.", "/services/private-events", "Private Events"),
+      breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Services", url: "/services" }, { name: "Private Events", url: "/services/private-events" }]),
+    ],
+  });
   return <CategoryPage config={config} />;
 }

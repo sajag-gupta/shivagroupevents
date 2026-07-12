@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
-import { motion, useInView } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 import { GetIcon } from "@/components/GetIcon";
 import {
   useGetFeaturedPortfolio,
@@ -9,8 +9,47 @@ import {
   useListTestimonials,
   useGetSiteStats,
 } from "@/lib/api";
+import { useSEO, LOCAL_BUSINESS_SCHEMA, faqSchema } from "@/lib/seo";
 
 const HERO_VIDEO = "/Cinematic_luxury_Indian_bridal.mp4";
+
+const HOME_FAQS = [
+  { q: "Which is the best event planner in Meerut?", a: "Shiva Group Events, founded in 2012 by Rajeev Gupta, is widely regarded as the #1 luxury event management company in Meerut, Uttar Pradesh. With over 1,500 successful events and 850+ satisfied clients across North India, we bring unmatched expertise and premium execution to every occasion." },
+  { q: "What types of events does Shiva Group Events organize?", a: "We specialize in luxury weddings, corporate events, celebrity & live shows, concerts, award ceremonies, brand activations, private parties, and college festivals. We serve clients across Meerut, Delhi, Noida, Greater Noida, Ghaziabad, Gurugram, Faridabad, Jaipur, Chandigarh, and Dehradun." },
+  { q: "How much does a wedding event cost with Shiva Group Events?", a: "Our wedding packages are fully customized based on your requirements, guest count, venue, and décor preferences. Budget options start from ₹5 Lakhs and go up to ₹1 Crore+ for ultra-premium destination weddings. Contact us for a detailed proposal." },
+  { q: "Can Shiva Group Events organize celebrity shows and concerts in Meerut?", a: "Yes! Shiva Group Events has a dedicated Celebrity & Entertainment division. We handle complete booking and management of Bollywood, Sufi, and Rock artists, along with stage production, sound execution, artist rider fulfillment, and crowd coordination." },
+  { q: "Which cities does Shiva Group Events serve?", a: "Shiva Group Events operates across 15+ cities in North India including Meerut (HQ), Delhi, Noida, Greater Noida, Ghaziabad, Gurugram, Faridabad, Jaipur, Chandigarh, and Dehradun. We also travel to other locations for destination events." },
+  { q: "How do I book Shiva Group Events for my event?", a: "You can reach us by calling +91 98970 15153 or +91 92197 08567, WhatsApp us directly, or fill the inquiry form on our Contact page. Our team will get back to you within 24 hours with a customized proposal." },
+];
+
+function FAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-border last:border-0">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between py-5 text-left gap-4 group"
+        aria-expanded={open}
+      >
+        <span className="text-foreground font-medium text-sm md:text-base group-hover:text-primary transition-colors">{q}</span>
+        {open ? <ChevronUp size={18} className="text-primary shrink-0" /> : <ChevronDown size={18} className="text-muted-foreground shrink-0" />}
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="overflow-hidden"
+          >
+            <p className="text-muted-foreground text-sm leading-relaxed pb-5">{a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 
 function CountUp({ end, duration = 2 }: { end: number; duration?: number }) {
@@ -65,6 +104,14 @@ function Preloader({ onDone }: { onDone: () => void }) {
 }
 
 export default function Home() {
+  useSEO({
+    title: "Best Event Planner in Meerut | Luxury Events North India",
+    description: "Shiva Group Events — #1 luxury event management company in Meerut, North India since 2012. Expert wedding planners, corporate event organizers, celebrity show managers. 1500+ events, 850+ happy clients. Call +91 98970 15153.",
+    canonical: "/",
+    keywords: "event planner Meerut, wedding planner Meerut, luxury event management North India, corporate event organizer Delhi NCR, celebrity show organizer Meerut, best event company UP, top event planners North India, Shiva Group Events",
+    schema: [LOCAL_BUSINESS_SCHEMA, faqSchema(HOME_FAQS)],
+  });
+
   const [showPreloader, setShowPreloader] = useState(() => !sessionStorage.getItem("sge_visited"));
   const [preloaderDone, setPreloaderDone] = useState(false);
   const [videoError, setVideoError] = useState(false);
@@ -344,6 +391,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ Section — boosts Google ranking for question-based searches */}
+      <section className="py-20 bg-background" aria-label="Frequently Asked Questions">
+        <div className="max-w-3xl mx-auto px-6">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12 text-center">
+            <p className="text-primary text-xs tracking-[0.3em] uppercase mb-4">FAQs</p>
+            <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-4">Frequently Asked Questions</h2>
+            <p className="text-muted-foreground">Everything you need to know about Shiva Group Events and our services.</p>
+          </motion.div>
+          <div className="divide-y divide-border border border-border px-6">
+            {HOME_FAQS.map((faq) => (
+              <FAQItem key={faq.q} q={faq.q} a={faq.a} />
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link href="/contact">
+              <span className="inline-flex items-center gap-2 text-primary text-sm hover:underline cursor-pointer">
+                Have more questions? Contact us <ArrowRight size={14} />
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 bg-foreground text-background">
         <div className="max-w-3xl mx-auto px-6 text-center">
@@ -358,7 +428,7 @@ export default function Home() {
                 </span>
               </Link>
               <a
-                href="https://wa.me/919999999999?text=Hi%2C%20I%20want%20to%20enquire%20about%20event%20planning."
+                href="https://wa.me/919897015153?text=Hi%2C%20I%20want%20to%20enquire%20about%20event%20planning."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-10 py-4 border border-white/30 text-white text-sm tracking-widest uppercase cursor-pointer hover:border-primary hover:text-primary transition-colors"

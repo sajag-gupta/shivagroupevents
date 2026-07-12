@@ -1,4 +1,5 @@
 import CategoryPage, { CategoryPageConfig } from "./CategoryPage";
+import { useSEO, serviceSchema, breadcrumbSchema } from "@/lib/seo";
 
 const config: CategoryPageConfig = {
   accentColor: "#10B981",
@@ -96,5 +97,15 @@ const config: CategoryPageConfig = {
 };
 
 export default function BrandActivations() {
+  useSEO({
+    title: "Brand Activation & Experiential Marketing Company in North India",
+    description: "Shiva Group Events — leading brand activation and experiential marketing company in Meerut, Delhi, Noida & North India. Mall activations, roadshows, product launches, and immersive brand experiences.",
+    canonical: "/services/brand-activations",
+    keywords: "brand activation company Meerut, experiential marketing North India, mall activation organizer UP, product launch event Delhi NCR, brand roadshow company, BTL activation Meerut",
+    schema: [
+      serviceSchema("Brand Activations", "Expert brand activation and experiential marketing in North India — mall setups, roadshows, and immersive consumer experiences.", "/services/brand-activations", "Brand Activations"),
+      breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Services", url: "/services" }, { name: "Brand Activations", url: "/services/brand-activations" }]),
+    ],
+  });
   return <CategoryPage config={config} />;
 }

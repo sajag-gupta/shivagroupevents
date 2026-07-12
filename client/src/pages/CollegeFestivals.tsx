@@ -1,4 +1,5 @@
 import CategoryPage, { CategoryPageConfig } from "./CategoryPage";
+import { useSEO, serviceSchema, breadcrumbSchema } from "@/lib/seo";
 
 const config: CategoryPageConfig = {
   accentColor: "#F97316",
@@ -106,5 +107,15 @@ const config: CategoryPageConfig = {
 };
 
 export default function CollegeFestivals() {
+  useSEO({
+    title: "College Festival Organizers in Meerut | Campus Events North India",
+    description: "Shiva Group Events — leading college festival and campus event organizers in Meerut, UP & North India. Celebrity performances, EDM nights, inter-college competitions, and complete fest management for universities.",
+    canonical: "/services/college-festivals",
+    keywords: "college festival organizer Meerut, campus event company UP, college fest management North India, inter-college event organizer, university event company Meerut, EDM night organizer colleges",
+    schema: [
+      serviceSchema("College Festivals", "Expert college festival and campus event management in North India — celebrity shows, EDM nights, and complete fest organization.", "/services/college-festivals", "College Festivals"),
+      breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Services", url: "/services" }, { name: "College Festivals", url: "/services/college-festivals" }]),
+    ],
+  });
   return <CategoryPage config={config} />;
 }

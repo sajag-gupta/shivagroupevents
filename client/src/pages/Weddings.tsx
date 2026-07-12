@@ -26,6 +26,7 @@ import {
   Flame,
   Zap,
 } from "lucide-react";
+import { useSEO, serviceSchema, breadcrumbSchema } from "@/lib/seo";
 
 /* ─── DATA ──────────────────────────────────────────────────────────────────── */
 
@@ -450,6 +451,16 @@ function LightboxModal({ src, onClose }: { src: string; onClose: () => void }) {
 /* ─── MAIN PAGE ──────────────────────────────────────────────────────────────── */
 
 export default function Weddings() {
+  useSEO({
+    title: "Luxury Wedding Planner in Meerut & North India | Royal Wedding Experts",
+    description: "Shiva Group Events — #1 luxury wedding planners in Meerut, UP & North India since 2012. Bespoke royal weddings, destination ceremonies, Rajasthani-themed weddings, grand decor, celebrity entertainment & complete planning. 500+ weddings delivered.",
+    canonical: "/services/weddings",
+    keywords: "luxury wedding planner Meerut, wedding management company UP, royal wedding organizer North India, destination wedding planner, best wedding planner Meerut, wedding event management Uttar Pradesh, grand wedding company",
+    schema: [
+      serviceSchema("Luxury Wedding Planning", "Expert luxury wedding planning in Meerut and North India — royal ceremonies, destination weddings, grand decor, and complete event management.", "/services/weddings", "Wedding Planning"),
+      breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Services", url: "/services" }, { name: "Luxury Weddings", url: "/services/weddings" }]),
+    ],
+  });
   const [activeJourney, setActiveJourney] = useState("engagement");
   const [activeWeddingType, setActiveWeddingType] = useState<number | null>(null);
   const [activeFeatured, setActiveFeatured] = useState<number | null>(null);

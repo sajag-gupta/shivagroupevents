@@ -1,4 +1,5 @@
 import CategoryPage, { CategoryPageConfig } from "./CategoryPage";
+import { useSEO, serviceSchema, breadcrumbSchema } from "@/lib/seo";
 
 const config: CategoryPageConfig = {
   accentColor: "#EF4444",
@@ -98,5 +99,15 @@ const config: CategoryPageConfig = {
 };
 
 export default function Concerts() {
+  useSEO({
+    title: "Concert Organizers in North India | Live Music Event Company",
+    description: "Shiva Group Events — expert concert organizers and live music event managers in Meerut, Delhi, UP & North India. Professional staging, line-array sound systems, lighting, crowd management. 100+ concerts delivered.",
+    canonical: "/services/concerts",
+    keywords: "concert organizer Meerut, live music event company North India, concert management UP, music festival organizer Delhi, line array sound North India, large concert organizer Meerut",
+    schema: [
+      serviceSchema("Concert & Live Music Events", "Professional concert organization and live music event management across North India with premium sound and staging.", "/services/concerts", "Concerts"),
+      breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Services", url: "/services" }, { name: "Concerts", url: "/services/concerts" }]),
+    ],
+  });
   return <CategoryPage config={config} />;
 }

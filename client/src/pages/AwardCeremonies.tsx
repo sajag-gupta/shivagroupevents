@@ -1,4 +1,5 @@
 import CategoryPage, { CategoryPageConfig } from "./CategoryPage";
+import { useSEO, serviceSchema, breadcrumbSchema } from "@/lib/seo";
 
 const config: CategoryPageConfig = {
   accentColor: "#F59E0B",
@@ -108,5 +109,15 @@ const config: CategoryPageConfig = {
 };
 
 export default function AwardCeremonies() {
+  useSEO({
+    title: "Award Ceremony Organizers in Meerut & North India",
+    description: "Shiva Group Events — premium award ceremony organizers in Meerut and North India. We design and execute red-carpet awards nights, corporate recognition events, and prestige galas with flawless production.",
+    canonical: "/services/award-ceremonies",
+    keywords: "award ceremony organizer Meerut, awards night management North India, corporate award event company UP, red carpet event organizer Delhi, recognition ceremony planner, gala night organizer Meerut",
+    schema: [
+      serviceSchema("Award Ceremonies", "Premium award ceremony organization in North India — red carpet events, corporate recognition nights, and prestige galas.", "/services/award-ceremonies", "Award Ceremonies"),
+      breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Services", url: "/services" }, { name: "Award Ceremonies", url: "/services/award-ceremonies" }]),
+    ],
+  });
   return <CategoryPage config={config} />;
 }

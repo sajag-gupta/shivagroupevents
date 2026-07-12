@@ -1,4 +1,5 @@
 import CategoryPage, { CategoryPageConfig } from "./CategoryPage";
+import { useSEO, serviceSchema, breadcrumbSchema } from "@/lib/seo";
 
 const config: CategoryPageConfig = {
   accentColor: "#A855F7",
@@ -108,5 +109,15 @@ const config: CategoryPageConfig = {
 };
 
 export default function CelebrityShows() {
+  useSEO({
+    title: "Celebrity Show Organizers in Meerut & North India | Bollywood Events",
+    description: "Shiva Group Events — premium celebrity show organizers in North India. We manage Bollywood concerts, live music shows, celebrity events, and entertainment nights across Meerut, Delhi, Noida & more. Book top artists today.",
+    canonical: "/services/celebrity-shows",
+    keywords: "celebrity show organizer Meerut, Bollywood event organizer North India, celebrity concert management UP, live show organizer Delhi NCR, entertainment event company Meerut, Bollywood night organizer",
+    schema: [
+      serviceSchema("Celebrity & Live Shows", "Premium celebrity show and Bollywood event management in North India. Complete artist booking, stage production, and crowd management.", "/services/celebrity-shows", "Celebrity Events"),
+      breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Services", url: "/services" }, { name: "Celebrity Shows", url: "/services/celebrity-shows" }]),
+    ],
+  });
   return <CategoryPage config={config} />;
 }

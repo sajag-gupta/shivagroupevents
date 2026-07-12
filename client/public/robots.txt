@@ -1,2 +1,25 @@
 User-agent: *
 Allow: /
+
+# Block admin routes from indexing
+Disallow: /admin
+Disallow: /admin/
+Disallow: /admin/*
+
+# Block API routes
+Disallow: /api/
+Disallow: /api/*
+
+# Allow all public pages
+Allow: /$
+Allow: /services
+Allow: /services/*
+Allow: /about
+Allow: /contact
+Allow: /cities
+
+# Sitemap location
+Sitemap: https://www.shivagroupevents.in/sitemap.xml
+
+# Crawl-delay (optional — be polite to crawlers)
+Crawl-delay: 1

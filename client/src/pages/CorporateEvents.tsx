@@ -1,4 +1,5 @@
 import CategoryPage, { CategoryPageConfig } from "./CategoryPage";
+import { useSEO, serviceSchema, breadcrumbSchema } from "@/lib/seo";
 
 const config: CategoryPageConfig = {
   accentColor: "#3B82F6",
@@ -120,5 +121,15 @@ const config: CategoryPageConfig = {
 };
 
 export default function CorporateEvents() {
+  useSEO({
+    title: "Corporate Event Management Company in Meerut & Delhi NCR",
+    description: "Shiva Group Events — top corporate event organizers in Meerut, Delhi, Noida & NCR. Expert execution of conferences, product launches, annual galas, award nights, and brand roadshows. 300+ corporate events delivered.",
+    canonical: "/services/corporate",
+    keywords: "corporate event management Meerut, corporate event organizer Delhi NCR, conference organizer North India, product launch event company Noida, annual gala organizer, award night management",
+    schema: [
+      serviceSchema("Corporate Event Management", "Premium corporate event management in Meerut and Delhi NCR — conferences, product launches, award nights, and brand roadshows.", "/services/corporate", "Corporate Events"),
+      breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Services", url: "/services" }, { name: "Corporate Events", url: "/services/corporate" }]),
+    ],
+  });
   return <CategoryPage config={config} />;
 }

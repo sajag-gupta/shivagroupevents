@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useListServices } from "@/lib/api";
+import { useSEO, breadcrumbSchema } from "@/lib/seo";
 
 /* ─── SERVICE CATEGORIES ─────────────────────────────────────────────────────── */
 
@@ -103,6 +104,13 @@ const cardVariants = {
 /* ─── COMPONENT ──────────────────────────────────────────────────────────────── */
 
 export default function Services() {
+  useSEO({
+    title: "All Event Management Services in Meerut & North India",
+    description: "Explore all event services by Shiva Group Events — weddings, corporate events, celebrity shows, concerts, award ceremonies, brand activations, private events & college festivals. Serving 15+ cities in North India.",
+    canonical: "/services",
+    keywords: "event management services Meerut, all event types North India, luxury event services UP, wedding corporate celebrity event company, event services Delhi Noida Meerut",
+    schema: [breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Services", url: "/services" }])],
+  });
   const { data: dbServices } = useListServices();
 
   const mergedCategories = CATEGORIES.map(cat => {

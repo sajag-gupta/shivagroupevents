@@ -2,11 +2,25 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, MessageCircle, CheckCircle } from "lucide-react";
 import { useSubmitLead } from "@/lib/api";
+import { useSEO } from "@/lib/seo";
 
 const eventTypes = ["Luxury Wedding", "Corporate Event", "Social Celebration", "Award Ceremony", "Concert / Show", "Brand Activation", "Private Event", "College Festival", "Other"];
 const budgetRanges = ["₹5L – ₹15L", "₹15L – ₹30L", "₹30L – ₹50L", "₹50L – ₹1Cr", "₹1Cr+", "Prefer not to say"];
 
 export default function Contact() {
+  useSEO({
+    title: "Contact Event Planners in Meerut | Get a Free Quote",
+    description: "Contact Shiva Group Events — top event planners in Meerut, North India. Get a free consultation and customized proposal for your wedding, corporate event, celebrity show, or any event. Call +91 98970 15153.",
+    canonical: "/contact",
+    keywords: "contact event planner Meerut, book event company North India, event inquiry Meerut, free event quote UP, event consultation Shiva Group Events",
+    schema: [{
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      name: "Contact Shiva Group Events",
+      url: "https://www.shivagroupevents.in/contact",
+      description: "Get in touch with Shiva Group Events for event planning consultations and quotes.",
+    }],
+  });
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "", eventType: "", location: "", eventDate: "", guestCount: "", budgetRange: "", message: "" });
   const submitMutation = useSubmitLead();
