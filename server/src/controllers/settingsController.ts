@@ -4,7 +4,7 @@ import { settingsTable } from "../models/index.js";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 
-const DEFAULT_PHONE = process.env.CONTACT_PHONE ?? "+91 70600 61117";
+const DEFAULT_PHONE = process.env.CONTACT_PHONE ?? "+91 98970 15153";
 const DEFAULT_EMAIL = process.env.CONTACT_EMAIL ?? "rajeev.event@gmail.com";
 
 const UpdateSettingsBody = z.object({

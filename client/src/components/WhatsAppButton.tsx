@@ -10,7 +10,7 @@ export function WhatsAppButton() {
   const [showTooltip, setShowTooltip] = useState(false);
   const { data: settings } = useGetSettings();
 
-  const phone = settings?.phone ?? "+91 70600 61117";
+  const phone = settings?.phone ?? "+91 98970 15153";
   const rawPhone = phone.replace(/[^0-9]/g, "");
   const href = `https://wa.me/${rawPhone}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 

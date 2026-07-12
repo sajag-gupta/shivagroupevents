@@ -156,11 +156,11 @@ export default function Contact() {
                 </div>
               </li>
               <li>
-                <a href="mailto:[EMAIL_ADDRESS]" className="flex items-start gap-4 group">
+                <a href="mailto:rajeev.event@gmail.com" className="flex items-start gap-4 group">
                   <Mail size={18} className="text-primary mt-0.5 shrink-0" />
                   <div>
                     <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">Email</p>
-                    <p className="text-muted-foreground text-sm">[EMAIL_ADDRESS]</p>
+                    <p className="text-muted-foreground text-sm">rajeev.event@gmail.com</p>
                   </div>
                 </a>
               </li>

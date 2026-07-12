@@ -9,7 +9,7 @@ const cities = ["Meerut", "Delhi", "Noida", "Greater Noida", "Ghaziabad", "Gurug
 
 export function Footer() {
   const { data: settings } = useGetSettings();
-  const phone = settings?.phone ?? "+91 70600 61117";
+  const phone = settings?.phone ?? "+91 98970 15153";
   const email = settings?.email ?? "rajeev.event@gmail.com";
   const rawPhone = phone.replace(/[^0-9]/g, "");
 
@@ -74,10 +74,15 @@ export function Footer() {
                 <span>Meerut, Uttar Pradesh, India</span>
               </li>
               <li>
-                <a href={`tel:${rawPhone}`} className="flex items-center gap-3 text-sm text-white/50 hover:text-primary transition-colors">
-                  <Phone size={15} className="shrink-0 text-primary" />
-                  {phone}
-                </a>
+                <div className="flex flex-col gap-1.5 pl-6 relative">
+                  <Phone size={15} className="absolute left-0 top-1 text-primary shrink-0" />
+                  <a href="tel:+919897015153" className="text-sm text-white/50 hover:text-primary transition-colors">
+                    +91 98970 15153
+                  </a>
+                  <a href="tel:+919219708567" className="text-sm text-white/50 hover:text-primary transition-colors">
+                    +91 92197 08567
+                  </a>
+                </div>
               </li>
               <li>
                 <a href={`mailto:${email}`} className="flex items-center gap-3 text-sm text-white/50 hover:text-primary transition-colors">

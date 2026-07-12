@@ -58,7 +58,7 @@ export function ChatBot() {
         ...prev,
         {
           role: "assistant",
-          content: "I am having trouble connecting right now. Please <a href='/contact' class='text-primary hover:underline font-semibold'>contact us</a> or WhatsApp us directly at +91 70600 61117."
+          content: "I am having trouble connecting right now. Please <a href='/contact' class='text-primary hover:underline font-semibold'>contact us</a> or WhatsApp us directly at +91 98970 15153 / +91 92197 08567."
         },
       ]);
     } finally {
