@@ -21,7 +21,7 @@ export interface SEOProps {
 }
 
 const SITE_NAME = "Shiva Group Events";
-const BASE_URL = "https://www.shivagroupevents.in";
+const BASE_URL = "https://www.shivagroupevents.com";
 const DEFAULT_OG_IMAGE = `${BASE_URL}/opengraph.jpg`;
 
 function setMeta(property: string, content: string, attr: "name" | "property" = "name") {
