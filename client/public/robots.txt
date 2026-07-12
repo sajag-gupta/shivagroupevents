@@ -19,7 +19,7 @@ Allow: /contact
 Allow: /cities
 
 # Sitemap location
-Sitemap: https://www.shivagroupevents.in/sitemap.xml
+Sitemap: https://www.shivagroupevents.com/sitemap.xml
 
 # Crawl-delay (optional — be polite to crawlers)
 Crawl-delay: 1

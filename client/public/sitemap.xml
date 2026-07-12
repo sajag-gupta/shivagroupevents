@@ -4,19 +4,19 @@
 
   <!-- Home -->
   <url>
-    <loc>https://www.shivagroupevents.in/</loc>
+    <loc>https://www.shivagroupevents.com/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://www.shivagroupevents.in/opengraph.jpg</image:loc>
+      <image:loc>https://www.shivagroupevents.com/opengraph.jpg</image:loc>
       <image:caption>Shiva Group Events — Luxury Event Management Meerut</image:caption>
     </image:image>
   </url>
 
   <!-- Services overview -->
   <url>
-    <loc>https://www.shivagroupevents.in/services</loc>
+    <loc>https://www.shivagroupevents.com/services</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -24,7 +24,7 @@
 
   <!-- Wedding services -->
   <url>
-    <loc>https://www.shivagroupevents.in/services/weddings</loc>
+    <loc>https://www.shivagroupevents.com/services/weddings</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
@@ -32,7 +32,7 @@
 
   <!-- Corporate events -->
   <url>
-    <loc>https://www.shivagroupevents.in/services/corporate</loc>
+    <loc>https://www.shivagroupevents.com/services/corporate</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -40,7 +40,7 @@
 
   <!-- Celebrity shows -->
   <url>
-    <loc>https://www.shivagroupevents.in/services/celebrity-shows</loc>
+    <loc>https://www.shivagroupevents.com/services/celebrity-shows</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -48,7 +48,7 @@
 
   <!-- Award ceremonies -->
   <url>
-    <loc>https://www.shivagroupevents.in/services/award-ceremonies</loc>
+    <loc>https://www.shivagroupevents.com/services/award-ceremonies</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -56,7 +56,7 @@
 
   <!-- Concerts -->
   <url>
-    <loc>https://www.shivagroupevents.in/services/concerts</loc>
+    <loc>https://www.shivagroupevents.com/services/concerts</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -64,7 +64,7 @@
 
   <!-- Brand activations -->
   <url>
-    <loc>https://www.shivagroupevents.in/services/brand-activations</loc>
+    <loc>https://www.shivagroupevents.com/services/brand-activations</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -72,7 +72,7 @@
 
   <!-- Private events -->
   <url>
-    <loc>https://www.shivagroupevents.in/services/private-events</loc>
+    <loc>https://www.shivagroupevents.com/services/private-events</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -80,7 +80,7 @@
 
   <!-- College festivals -->
   <url>
-    <loc>https://www.shivagroupevents.in/services/college-festivals</loc>
+    <loc>https://www.shivagroupevents.com/services/college-festivals</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
@@ -88,7 +88,7 @@
 
   <!-- About -->
   <url>
-    <loc>https://www.shivagroupevents.in/about</loc>
+    <loc>https://www.shivagroupevents.com/about</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
@@ -96,7 +96,7 @@
 
   <!-- Contact -->
   <url>
-    <loc>https://www.shivagroupevents.in/contact</loc>
+    <loc>https://www.shivagroupevents.com/contact</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.85</priority>
@@ -104,7 +104,7 @@
 
   <!-- Cities -->
   <url>
-    <loc>https://www.shivagroupevents.in/cities</loc>
+    <loc>https://www.shivagroupevents.com/cities</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
